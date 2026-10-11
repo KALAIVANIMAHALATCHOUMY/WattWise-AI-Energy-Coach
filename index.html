@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#f5f7f2" />
+  <title>WattWise — your home, a little lighter</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <a class="brand" href="#top" aria-label="WattWise home"><span class="brand-mark">w</span><span>WattWise</span></a>
+      <div class="home-switch"><span class="home-icon">⌂</span><span><small>YOUR HOME</small><strong id="home-name">Ananya’s home</strong></span><span class="chevron">⌄</span></div>
+      <nav aria-label="Main navigation"><span class="nav-label">WORKSPACE</span><a class="nav-item active" href="#overview"><span>◫</span> Overview</a><a class="nav-item" href="#appliances"><span>▦</span> Appliances</a><a class="nav-item" href="#savings"><span>↗</span> Savings plan</a><a class="nav-item" href="#coach"><span>✳</span> Energy coach <i>NEW</i></a></nav>
+      <div class="sidebar-bottom"><div class="impact-mini"><span class="mini-leaf">✳</span><p>You’re building a<br><strong>lighter footprint</strong></p><div class="mini-progress"><span></span></div><small>18% below similar homes</small></div><div class="profile"><div class="avatar">A</div><span><strong>Ananya Sharma</strong><small>Home owner</small></span><span class="dots">···</span></div></div>
+    </aside>
+    <main id="top">
+      <header class="topbar"><div class="breadcrumb">Home <span>/</span> Overview</div><div class="top-actions"><span class="live-dot"></span><span class="sync-label" id="sync-label">Demo home · updated just now</span><button class="icon-btn" aria-label="Notifications">♧<b></b></button><button class="help-btn">Need help?</button></div></header>
+      <section class="page-content" id="overview">
+        <div class="heading-row"><div><div class="eyebrow"><span class="sun">☼</span> YOUR ENERGY, MADE SIMPLE</div><h1>A brighter way to<br><em>power your home.</em></h1><p class="subhead">Little changes add up. Here’s what your home is telling us this month.</p></div><div class="heading-actions"><button class="button button-light" id="upload-button"><span>↑</span> Upload meter data</button><input id="csv-input" type="file" accept=".csv,text/csv" hidden><button class="button button-dark" id="refresh-button"><span>✳</span> Analyze my home</button></div></div>
+        <div class="banner"><div class="banner-icon">✦</div><div><strong>Your home could save about <span id="banner-savings">₹1,240</span> this month.</strong><p>Three small shifts. No new appliances needed.</p></div><a href="#savings" class="banner-link">See your plan <span>→</span></a><button class="banner-close" aria-label="Dismiss">×</button></div>
+        <div class="section-head"><div><h2>Your home at a glance</h2><p>Estimated from your recent energy pattern</p></div><div class="period-select">This month <span>⌄</span></div></div>
+        <div class="metrics-grid"><article class="metric-card usage-card"><div class="metric-top"><span>ENERGY USED</span><span class="metric-icon green">⌁</span></div><div class="metric-value"><strong id="usage-value">386</strong><span>kWh</span></div><div class="metric-foot"><span class="trend-down">↘ 8.2%</span> <span>vs. last month</span><div class="sparkline"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div></article>
+          <article class="metric-card bill-card"><div class="metric-top"><span>ESTIMATED BILL</span><span class="metric-icon yellow">₹</span></div><div class="metric-value"><span class="rupee">₹</span><strong id="bill-value">2,180</strong></div><div class="metric-foot"><span>≈ ₹70 per day</span><span class="bill-note">Illustrative estimate</span></div></article>
+          <article class="metric-card carbon-card"><div class="metric-top"><span>CARBON FOOTPRINT</span><span class="metric-icon blue">✳</span></div><div class="metric-value"><strong id="carbon-value">270</strong><span>kg CO₂</span></div><div class="metric-foot"><span class="trend-down">↘ 12 kg</span><span>less than last month</span></div></article>
+          <article class="metric-card potential-card"><div class="metric-top"><span>SAVINGS POTENTIAL</span><span class="metric-icon orange">↗</span></div><div class="metric-value"><span class="rupee">₹</span><strong id="potential-value">1,240</strong></div><div class="metric-foot"><span>with 3 easy changes</span><a href="#savings">View plan →</a></div></article></div>
+        <div class="content-grid"><section class="panel breakdown-panel" id="appliances"><div class="panel-head"><div><h2>Where your energy goes</h2><p>Estimated appliance breakdown <span class="info" title="These are estimates based on usage patterns, not individual appliance sensors.">i</span></p></div><button class="more-btn" aria-label="More options">···</button></div><div class="chart-layout"><div class="donut-wrap"><div class="donut" id="donut"><div class="donut-hole"><strong id="donut-total">386</strong><span>kWh this month</span></div></div></div><div class="legend" id="legend"></div></div><div class="chart-foot"><span class="chart-foot-icon">⌁</span><span>Cooling is your biggest energy user.<br><strong>A small AC adjustment goes a long way.</strong></span><a href="#savings">Explore →</a></div></section>
+          <section class="panel usage-panel"><div class="panel-head"><div><h2>Daily energy rhythm</h2><p>Average use by time of day</p></div><button class="select-small">This week⌄</button></div><div class="bar-chart" id="bar-chart" aria-label="Average energy use by time of day"></div><div class="chart-axis"><span>6 AM</span><span>9 AM</span><span>12 PM</span><span>3 PM</span><span>6 PM</span><span>9 PM</span><span>12 AM</span></div><div class="peak-note"><span>☼</span><span><strong>Your peak is around 7 PM</strong><br>That’s when the geyser and AC overlap.</span></div></section></div>
+        <section class="savings-section" id="savings"><div class="section-head savings-heading"><div><div class="eyebrow"><span class="sun">✦</span> YOUR PERSONAL SAVINGS PLAN</div><h2>Three small shifts. <em>A lighter bill.</em></h2><p>Practical ideas, ranked by your potential savings.</p></div><span class="estimate-pill">ESTIMATES · YOUR RESULTS MAY VARY</span></div><div class="actions-grid" id="actions-grid"></div></section>
+        <section class="coach-panel" id="coach"><div class="coach-avatar">✳</div><div class="coach-copy"><div class="coach-title"><div><span class="coach-kicker">YOUR ENERGY COACH</span><h2>Curious about your bill?</h2></div><div class="language-select"><span>🌐</span><select id="language-select" aria-label="Coach language"><option value="en">English</option><option value="hi">हिन्दी</option><option value="ta">தமிழ்</option></select></div></div><p>Ask me about your energy use, bill, or how to save. I’ll use your home’s estimates to help.</p><div class="chat-prompts"><button>Why is cooling using so much?</button><button>How can I lower my bill?</button><button>Is solar right for my home?</button></div><form class="chat-form" id="chat-form"><input id="chat-input" placeholder="Ask WattWise anything…" autocomplete="off"><button aria-label="Send message">↑</button></form><div class="chat-reply" id="chat-reply" aria-live="polite"></div><small class="coach-disclaimer">WattWise is a guide, not an energy audit. Estimates are not utility bills.</small></div></section>
+        <footer><span>© 2026 WattWise</span><span>Built for Indian homes · Made with care <span class="footer-heart">♥</span></span><a href="https://cea.nic.in/cdm-co2-baseline-database/?lang=en" target="_blank" rel="noreferrer">CO₂ methodology ↗</a></footer>
+      </section>
+    </main>
+  </div>
+  <div class="toast" id="toast" role="status"></div>
+  <script src="app.js"></script>
+</body>
+</html>

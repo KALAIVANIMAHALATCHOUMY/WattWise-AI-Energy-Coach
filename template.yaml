@@ -1,0 +1,47 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: WattWise deterministic household energy analysis API
+Globals:
+  Function:
+    Timeout: 15
+    MemorySize: 256
+    Runtime: python3.12
+    Environment:
+      Variables:
+        CO2_KG_PER_KWH: '0.70'
+        ILLUSTRATIVE_RATE_INR: '5.65'
+Resources:
+  WattWiseApi:
+    Type: AWS::Serverless::HttpApi
+    Properties:
+      CorsConfiguration:
+        AllowOrigins: ['*']
+        AllowHeaders: [content-type]
+        AllowMethods: [POST, OPTIONS]
+  AnalyzeFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: backend/
+      Handler: app.handler
+      Policies:
+        - Statement:
+            - Effect: Allow
+              Action: bedrock:InvokeModel
+              Resource: '*'
+      Events:
+        Analyze:
+          Type: HttpApi
+          Properties:
+            ApiId: !Ref WattWiseApi
+            Path: /analyze
+            Method: POST
+        Chat:
+          Type: HttpApi
+          Properties:
+            ApiId: !Ref WattWiseApi
+            Path: /chat
+            Method: POST
+Outputs:
+  ApiBaseUrl:
+    Description: API base URL; append /analyze or /chat
+    Value: !Sub 'https://${WattWiseApi}.execute-api.${AWS::Region}.${AWS::URLSuffix}'
